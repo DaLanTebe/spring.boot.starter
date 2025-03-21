@@ -34,11 +34,11 @@ public class UseCyclicBarrierAspect {
         CyclicBarrier barrier = barriers.computeIfAbsent(barrierName, k -> new CyclicBarrier(useCyclicBarrier.parties(), barrierAction::action));
 
         try {
-            LOGGER.info("Поток " + Thread.currentThread().getName() + " ждет у барьера");
+            LOGGER.info("Поток " + Thread.currentThread().threadId() + " ждет у барьера");
 
             barrier.await();
 
-            LOGGER.info("Поток " + Thread.currentThread().getName() + " Пересек барьер");
+            LOGGER.info("Поток " + Thread.currentThread().threadId() + " Пересек барьер");
         }catch (Exception e){
             e.printStackTrace();
         }

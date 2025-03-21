@@ -29,7 +29,7 @@ public class UseSemaphoreAspect {
 
         try {
             semaphore.acquire();
-            LOGGER.info("Семафор захвачен потоком " + Thread.currentThread().getName());
+            LOGGER.info("Семафор захвачен потоком " + Thread.currentThread().threadId());
         } finally {
             semaphore.release();
 
